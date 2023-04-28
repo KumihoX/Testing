@@ -1,10 +1,7 @@
-from typing import Type
-
-
 class Solution:
 
     @staticmethod
-    def longest_increasing_path(matrix: list[list[int]]) -> Type[ValueError]:
+    def longest_increasing_path(matrix: list[list[int]]):
         ROWS, COLS = len(matrix), len(matrix[0])
         dp = {}  # (r, c) -> LIP
 
@@ -22,8 +19,10 @@ class Solution:
             dp[(r, c)] = res
             return res
 
-
         for r in range(ROWS):
             for c in range(COLS):
+                if matrix[r][c] > 2**31 - 1:
+                    dp = {}
+                    break
                 dfs(r, c, -1)
         return max(dp.values())
