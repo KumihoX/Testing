@@ -6,15 +6,14 @@ from parameterized import parameterized
 class MyTestCase(unittest.TestCase):
     solution: Solution = Solution()
 
-    # Нужен баг репорт
     @parameterized.expand([
         ("is_string", "it's string"),
         ("is_float", 2.5),
         ("is_complex", complex(1, 2)),
         ("is_none", None)
     ])
-    def test_matrix_comprises_invalid_data(self, _, matrix: list[list]):
-        with self.assertRaises(ValueError):
+    def test_with_invalid_data_instead_of_matrix(self, _, matrix: list[list]):
+        with self.assertRaises(TypeError):
             self.solution.longest_increasing_path(matrix)
 
     def test_below_left_bound_matrix_length(self):
@@ -45,7 +44,6 @@ class MyTestCase(unittest.TestCase):
             200
         )
 
-    # Нужен баг репорт
     def test_higher_right_bound_matrix_string_length(self):
         with self.assertRaises(ValueError):
             self.solution.longest_increasing_path([[i for i in range(0, 201)]])
@@ -94,14 +92,13 @@ class MyTestCase(unittest.TestCase):
             2
         )
 
-    # Нужен баг репорт
     @parameterized.expand([
         ("is_string", [["it's string"]]),
         ("is_float", [[2.5]]),
         ("is_complex", [[complex(1, 2)]]),
     ])
     def test_matrix_contain_invalid_data(self, _, matrix: list[list]):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             self.solution.longest_increasing_path(matrix)
 
 
