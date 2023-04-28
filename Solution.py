@@ -21,7 +21,7 @@ class Solution:
 
         for r in range(ROWS):
             for c in range(COLS):
-                if matrix[r][c] > 2**31 - 1:
+                if matrix[r][c] > 2**31 - 1 | matrix[r][c] % 10 != 0:
                     dp = {}
                     break
                 dfs(r, c, -1)
