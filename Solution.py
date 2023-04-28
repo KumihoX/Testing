@@ -2,11 +2,10 @@ class Solution:
 
     @staticmethod
     def longest_increasing_path(matrix: list[list[int]]):
-        ROWS, COLS = len(matrix), len(matrix[0])
         dp = {}  # (r, c) -> LIP
 
         def dfs(r, c, prevVal):
-            if r < 0 or r == ROWS or c < 0 or c == COLS or matrix[r][c] <= prevVal or COLS > 200:
+            if r < 0 or r == ROWS or c < 0 or c == COLS or matrix[r][c] <= prevVal:
                 return 0
             if (r, c) in dp:
                 return dp[(r, c)]
@@ -19,10 +18,17 @@ class Solution:
             dp[(r, c)] = res
             return res
 
-        for r in range(ROWS):
-            for c in range(COLS):
-                if matrix[r][c] > 2**31 - 1 | matrix[r][c] % 10 != 0:
-                    dp = {}
-                    break
-                dfs(r, c, -1)
+        if type(matrix) is list:
+            ROWS = len(matrix)
+            for r in range(ROWS):
+                if type(matrix[r]) is list:
+                    COLS = len(matrix[0])
+                    for c in range(COLS):
+                        if type(matrix[r][c]) is int:
+                            if matrix[r][c] > 2 ** 31 - 1 or matrix[r][c] % 1 != 0 or COLS > 200:
+                                dp = {}
+                                break
+                            dfs(r, c, -1)
+                        else: break
+                else: break
         return max(dp.values())
