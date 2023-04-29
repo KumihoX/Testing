@@ -26,9 +26,13 @@ class Solution:
                     for c in range(COLS):
                         if type(matrix[r][c]) is int:
                             if matrix[r][c] > 2 ** 31 - 1 or matrix[r][c] % 1 != 0 or COLS > 200:
-                                dp = {}
+                                raise ValueError
                                 break
                             dfs(r, c, -1)
-                        else: break
-                else: break
+                        else:
+                            raise ValueError
+                            break
+                else:
+                    raise ValueError
+                    break
         return max(dp.values())
