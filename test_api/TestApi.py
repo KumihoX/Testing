@@ -4,6 +4,7 @@ import requests
 from lib.ApiWrapper import *
 from parameterized import parameterized
 
+
 class TestClass:
     def test_get_form_http_status(self):
         assert get_form().status_code == 200

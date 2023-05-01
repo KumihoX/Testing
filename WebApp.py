@@ -34,16 +34,19 @@ def hello_world():
             return "Ошибка: введенные данные некорректны"
 
     return f'<html>' \
+           f'<head>' \
+           f'<title>Longest Increasing Path In a Matrix</title>' \
+           f'</head>' \
            f'<body>' \
-           f'<h1>Longest Increasing Path In a Matrix</h1>' \
+           f'<h1 id="header">Longest Increasing Path In a Matrix</h1>' \
            f'<form action="/" method="POST">' \
-           f'<h3>Введите высоту матрицы</h3>' \
-           f'<input type="text" name="height" /><br />' \
-           f'<h3>Введите ширину матрицы</h3>' \
-           f'<input type="text" name="width" /><br />' \
-           f'<h3>Введите содержимое матрицы через пробел</h3>' \
-           f'<input type="text" name="matrix_data" /><br /><br />' \
-           f'<input type="submit" />' \
+           f'<h3 id="header_height">Введите высоту матрицы</h3>' \
+           f'<input type="text" id="height" name="height" /><br />' \
+           f'<h3 id="header_width">Введите ширину матрицы</h3>' \
+           f'<input type="text" id="width" name="width" /><br />' \
+           f'<h3 id="header_matrix_data">Введите содержимое матрицы через пробел</h3>' \
+           f'<input type="text" id="matrix_data" name="matrix_data"/><br /><br />' \
+           f'<input id="submit" type="submit" />' \
            f'</form>' \
            f'</body>' \
            f'</html>'
